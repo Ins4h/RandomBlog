@@ -5,6 +5,7 @@ const BlogTemplate = ({ data }) => {
   return (
     <div>
       <h1>{data.markdownRemark.frontmatter.title}</h1>
+      <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></div>
     </div>
   )
 }
