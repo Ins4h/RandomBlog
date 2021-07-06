@@ -9,7 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             frontmatter {
-              slug
+              path
             }
             id
           }
@@ -20,7 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   result.data.allMarkdownRemark.edges.map(edge => {
     createPage({
-      path: edge.node.frontmatter.slug,
+      path: edge.node.frontmatter.path,
       component: blogTemplate,
       context: {
         id: edge.node.id,
