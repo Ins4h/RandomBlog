@@ -1,3 +1,4 @@
 ---
-tite: MyBlog
+title: MyBlog
+slug: my-blog
 ---
