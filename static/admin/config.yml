@@ -11,7 +11,7 @@ collections:
     folder: src/data/blog
     create: true
     fields:
-      - { name: id, widget: hidden, default: blogs }
+      - { name: id, widget: hidden, default: blog }
       - { name: path, label: Path }
       - { name: date, label: Date, widget: datetime }
       - { name: title, label: Title }
