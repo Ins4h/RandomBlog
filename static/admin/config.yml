@@ -16,3 +16,35 @@ collections:
       - { name: date, label: Date, widget: datetime }
       - { name: title, label: Title }
       - { name: body, label: Body, widget: markdown }
+
+  - name: quizz
+    label: Quizz
+    folder: src/data/quizzes
+    create: true
+    fields:
+      - name: questionsList
+        label: Zestaw Pytań
+        widget: list
+        fields:
+          - name: question
+            label: Pytanie
+            widget: object
+            fields:
+              - name: questionContent
+                label: Treść Pytania
+                widget: string
+              - name: answersList
+                label: Zestaw Odpowiedzi
+                widget: list
+                fields:
+                  - name: answer
+                    label: Odpowiedź
+                    widget: object
+                    fields:
+                      - name: answerContent
+                        label: Treść Odpowiedzi
+                        widget: string
+                      - name: isCorrect
+                        label: Czy odpowiedz jest poprawna
+                        widget: boolean
+                        default: false

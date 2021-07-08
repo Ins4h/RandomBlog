@@ -18,8 +18,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `blogs`,
+        name: `blog`,
         path: `${__dirname}/src/data/blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `quizz`,
+        path: `${__dirname}/src/data/quizzes`,
       },
     },
     `gatsby-transformer-sharp`,
