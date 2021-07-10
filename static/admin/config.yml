@@ -29,6 +29,12 @@ collections:
           - name: questionContent
             label: Treść Pytania
             widget: string
+          - name: possibleAnswers
+            label: Ilość możliwych odpowiedzi
+            widget: number
+            default: 1
+            value_type: int
+            min: 1
           - name: answersList
             label: Zestaw Odpowiedzi
             widget: list
