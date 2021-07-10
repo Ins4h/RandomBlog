@@ -1,17 +1,23 @@
 import React from "react"
 
 const QuestionButtons = ({
-  currQuestion,
-  setCurrQuestion,
+  currentQuestion,
+  setCurrentQuestion,
   numberOfQuestions,
 }) => {
   return (
     <div>
-      <button type="button" onClick={() => setCurrQuestion(currQuestion - 1)}>
+      <button
+        type="button"
+        onClick={() => setCurrentQuestion(currentQuestion - 1)}
+      >
         Poprzednie Pytanie
       </button>
-      <button type="button" onClick={() => setCurrQuestion(currQuestion + 1)}>
-        {currQuestion < numberOfQuestions - 1
+      <button
+        type="button"
+        onClick={() => setCurrentQuestion(currentQuestion + 1)}
+      >
+        {currentQuestion < numberOfQuestions - 1
           ? "Następne Pytanie"
           : "Zakończ Quizz"}
       </button>

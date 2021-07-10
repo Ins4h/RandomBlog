@@ -1,10 +1,12 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import AnswersList from "../quizzComponents/AnswersList"
 import QuestionButtons from "../quizzComponents/QuestionButtons"
 import EndQuizz from "../quizzComponents/EndQuizz"
 
 const Quizz = () => {
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [questions, setQuestions] = useState([])
   const quizz = useStaticQuery(graphql`
     query MyQuery {
       allMarkdownRemark(filter: { frontmatter: { id: { eq: "quizz" } } }) {
@@ -13,6 +15,7 @@ const Quizz = () => {
             frontmatter {
               questionsList {
                 questionContent
+                possibleAnswers
                 answersList {
                   isCorrect
                   answerContent
@@ -25,32 +28,40 @@ const Quizz = () => {
     }
   `)
 
-  const [questions, setQuestions] = useState(
-    quizz.allMarkdownRemark.edges[0].node.frontmatter.questionsList
-  )
-  const [currQuestion, setCurrQuestion] = useState(0)
+  useEffect(() => {
+    const questionsList =
+      quizz.allMarkdownRemark.edges[0].node.frontmatter.questionsList
 
-  return (
-    <div>
-      <h1> Quizz </h1>
-      {currQuestion < questions.length ? (
-        <>
-          <h2>{questions[currQuestion].questionContent}</h2>
-          <AnswersList
-            answers={questions[currQuestion].answersList}
-            setQuestions={setQuestions}
-          />
-          <QuestionButtons
-            currQuestion={currQuestion}
-            setCurrQuestion={setCurrQuestion}
-            numberOfQuestions={questions.length}
-          />
-        </>
-      ) : (
-        <EndQuizz questions={questions} />
-      )}
-    </div>
-  )
+    setQuestions(questionsList)
+  }, [quizz])
+
+  if (currentQuestion < questions.length) {
+    console.log(currentQuestion, questions)
+    return (
+      <>
+        <h2>{questions[currentQuestion].questionContent}</h2>
+        <AnswersList
+          question={questions[currentQuestion]}
+          setQuestions={setQuestions}
+          currentQuestion={currentQuestion}
+        />
+        <QuestionButtons
+          currentQuestion={currentQuestion}
+          setCurrentQuestion={setCurrentQuestion}
+          numberOfQuestions={questions.length}
+        />
+      </>
+    )
+  } else {
+    console.log(currentQuestion, questions.length)
+    return (
+      <EndQuizz
+        questions={questions}
+        setQuestions={setQuestions}
+        setCurrentQuestion={setCurrentQuestion}
+      />
+    )
+  }
 }
 
 export default Quizz

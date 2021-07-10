@@ -1,7 +1,6 @@
 import React from "react"
 
-const EndQuizz = ({ questions }) => {
-  console.log(questions)
+const EndQuizz = ({ questions, setQuestions, setCurrentQuestion }) => {
   let correctAnswers = 0
   let allCorrectAnswers = 0
 
@@ -11,10 +10,27 @@ const EndQuizz = ({ questions }) => {
       if (answer.isCorrect) allCorrectAnswers++
     })
   })
-  console.log(correctAnswers)
+
+  const handleRestart = () => {
+    setCurrentQuestion(0)
+    setQuestions(prev => {
+      let newState = [...prev]
+      newState.forEach(questionItem =>
+        questionItem.answersList.forEach(
+          answerItem => (answerItem.isSelected = false)
+        )
+      )
+      return newState
+    })
+  }
   return (
     <div>
-      {correctAnswers}/{allCorrectAnswers}
+      <p>
+        {correctAnswers}/{allCorrectAnswers}
+      </p>
+      <button type="button" onClick={handleRestart}>
+        Reset quizz
+      </button>
     </div>
   )
 }
