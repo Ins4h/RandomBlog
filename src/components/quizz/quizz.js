@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import AnswersList from "../quizzComponents/AnswersList"
-import QuestionButtons from "../quizzComponents/QuestionButtons"
-import EndQuizz from "../quizzComponents/EndQuizz"
+import AnswersList from "./quizzComponents/AnswersList"
+import QuestionButtons from "./quizzComponents/QuestionButtons"
+import EndQuizz from "./quizzComponents/EndQuizz"
 
 const Quizz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -36,7 +36,6 @@ const Quizz = () => {
   }, [quizz])
 
   if (currentQuestion < questions.length) {
-    console.log(currentQuestion, questions)
     return (
       <>
         <h2>{questions[currentQuestion].questionContent}</h2>
@@ -53,7 +52,6 @@ const Quizz = () => {
       </>
     )
   } else {
-    console.log(currentQuestion, questions.length)
     return (
       <EndQuizz
         questions={questions}

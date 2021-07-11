@@ -7,12 +7,14 @@ const QuestionButtons = ({
 }) => {
   return (
     <div>
-      <button
-        type="button"
-        onClick={() => setCurrentQuestion(currentQuestion - 1)}
-      >
-        Poprzednie Pytanie
-      </button>
+      {currentQuestion ? (
+        <button
+          type="button"
+          onClick={() => setCurrentQuestion(currentQuestion - 1)}
+        >
+          Poprzednie Pytanie
+        </button>
+      ) : null}
       <button
         type="button"
         onClick={() => setCurrentQuestion(currentQuestion + 1)}
