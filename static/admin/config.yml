@@ -46,3 +46,15 @@ collections:
                 label: Czy odpowiedz jest poprawna
                 widget: boolean
                 default: false
+  - name: test
+    label: test
+    folder: src/data/test
+    create: true
+    fields:
+      - name: myWidget
+        label: My Widget
+        widget: questionsList
+        fields:
+          - name: content
+            label: content
+            widget: string
