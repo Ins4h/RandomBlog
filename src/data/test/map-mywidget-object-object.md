@@ -1,4 +1,0 @@
----
-myWidget:
-  - answersList: []
----
