@@ -1,5 +1,0 @@
----
-myWidget:
-  - answersList: []
-    questionContent: km
----
