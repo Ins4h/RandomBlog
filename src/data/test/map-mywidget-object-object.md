@@ -1,0 +1,5 @@
+---
+myWidget:
+  - answersList: []
+    questionContent: ss
+---
